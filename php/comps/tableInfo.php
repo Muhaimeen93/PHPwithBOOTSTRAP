@@ -1,25 +1,33 @@
-<div class= "p-2">
-    <table class="font10 table text-center" >
+<?php
+$json = file_get_contents('./info.json');
+$data = json_decode($json);
+foreach ($data as $row) {
+echo
+"<div class= 'p-2'>
+    <table class='font10 table text-center' width='100%' >
                 <tbody>
-                  <tr class="rowColor">
-                    <td class="">
-                      <b>Instructor: </b><br>
-                      <span id="lbl_InstrName">Kotov Alexander</span>
-                    </td>
-                    <td>
-                      <b>Course: </b><br>
-                      <span id="lbl_CourseName">CSC       2200      </span>
-                    </td>
-                    <td>
-                      <b>Call No.: </b><br>
-                      <span id="lbl_CallNo">21660     </span>
-                    </td>
-                    <td>
-                      <b>Students Responding: </b> <br>
-                        <span id="lbl_Responses" >38</span> of
-                        <span id="lbl_Enrollment">65</span>
-                      </td>
+                  <tr class='rowColor'>
+                    <td  width='25%'>
+                      <b>Instructor: </b><br>"
+                    . $row->instructor .
+                    "</td>
+                    <td  width='25%'>
+                      <b>Course: </b><br>"
+                    . $row->course .
+                    "</td>
+                    <td  width='25%'>
+                      <b>Call No.: </b><br>"
+                    . $row->call_no .
+                    "</td>
+                    <td  width='25%'>
+                      <b>Students Responding: </b> <br>"
+                    . $row->responses . " of "
+                    . $row->student_count .
+                    "</td>
                 </tr>
                 </tbody>
     </table>
   </div>
+";
+}
+?>
